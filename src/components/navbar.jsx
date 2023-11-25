@@ -1,34 +1,147 @@
 import PropTypes from 'prop-types';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const SidebarNavbar = ({ activeTab, onTabChange }) => {
-  const handleTabClick = (tabName) => {
-    onTabChange(tabName);
-  };
-
+const CustomNavbar = ({ isSubPeriodPage }) => {
   return (
-    <Navbar bg="light" expand="lg" style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 1000, alignItems: "flex-start" }}>
-      <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="flex-column">
-            <Nav.Link href="#home" onClick={() => handleTabClick('INICIO')} active={activeTab === 'INICIO'}>INICIO</Nav.Link>
+    <>
+      <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+        <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+          <a href="/" className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <i className="bi bi-house fs-4"></i>
+            <span className="fs-5 d-none d-sm-inline">Menu</span>
+          </a>
+          <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            <li className="nav-item">
+              <Link to="/Inicio" className="nav-link align-middle px-0">
+                <i className="bi bi-house fs-4"></i>
+                <span className="ms-1 d-none d-sm-inline">Inicio</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link px-0 align-middle" data-bs-toggle="collapse" data-bs-target="#submenu-repositorio">
+                <i className="bi bi-folder fs-4"></i>
+                <span className="ms-1 d-none d-sm-inline">Repositorio</span>
+              </a>
+              <ul className={`collapse nav flex-column ms-1 `} id="submenu-repositorio" data-bs-parent="#menu">
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <span className="d-none d-sm-inline">Periodo Alcaldia</span>
+                  </Link>
+                </li>
+              </ul>
+            </li>
 
-            <NavDropdown title="REPOSITORIO" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#link2" onClick={() => handleTabClick('PERIODO_ALCALDIA')} active={activeTab === 'PERIODO_ALCALDIA'}>Periodo de alcaldía</NavDropdown.Item>
-            </NavDropdown>
+            <li className="nav-item">
+              <a href="#" className="nav-link px-0 align-middle" data-bs-toggle="collapse" data-bs-target="#submenu-areas">
+                <i className="bi bi-laptop fs-4"></i>
+                <span className="ms-1 d-none d-sm-inline">AREAS / OFICINAS</span>
+              </a>
+              <ul className={`collapse nav flex-column ms-1 `} id="submenu-areas" data-bs-parent="#menu">
+                <li className="w-100">
+                  <Link to="/areas" className="nav-link px-0">
+                    <i className="bi bi-laptop fs-4" style={{ marginRight: "5px" }}></i>
 
-            <Nav.Link href="#link3" onClick={() => handleTabClick('PERIODO_ALCALDIA')} active={activeTab === 'PERIODO_ALCALDIA'}>AYUDA</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+                    <span className="d-none d-sm-inline">AREAS / OFICINAS</span>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link px-0 align-middle" data-bs-toggle="collapse" data-bs-target="#submenu-usuarios">
+                <i className="bi bi-people-fill fs-4"></i>
+                <span className="ms-1 d-none d-sm-inline">USUARIOS</span>
+              </a>
+              <ul className={`collapse nav flex-column ms-1 `} id="submenu-usuarios" data-bs-parent="#menu">
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-people-fill fs-4" style={{ marginRight: "5px" }}></i>
+                    <span className="d-none d-sm-inline">Encargados</span>
+                  </Link>
+                </li>
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-incognito fs-4" style={{ marginRight: "5px" }}></i>
+
+                    <span className="d-none d-sm-inline">Aministrador</span>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link px-0 align-middle" data-bs-toggle="collapse" data-bs-target="#submenu-reportes">
+                <i className="bi bi-images fs-4"></i>
+                <span className="ms-1 d-none d-sm-inline">REPORTES</span>
+              </a>
+              <ul className={`collapse nav flex-column ms-1 `} id="submenu-reportes" data-bs-parent="#menu">
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-bar-chart-fill fs-4" style={{ marginRight: "5px" }}></i>
+                    <span className="d-none d-sm-inline">Documentos</span>
+                  </Link>
+                </li>
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-bar-chart-fill fs-4" style={{ marginRight: "5px" }}></i>
+                    <span className="d-none d-sm-inline">Documentos Activos</span>
+                  </Link>
+                </li>
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-bar-chart-fill fs-4" style={{ marginRight: "5px" }}></i>
+                    <span className="d-none d-sm-inline">Documentos Perdidos</span>
+                  </Link>
+                </li>
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-bar-chart-fill fs-4" style={{ marginRight: "5px" }}></i>
+                    <span className="d-none d-sm-inline">Reporte de Encargado</span>
+                  </Link>
+                </li>
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-bar-chart-fill fs-4" style={{ marginRight: "5px" }}></i>
+                    <span className="d-none d-sm-inline">Reporte de Administrador</span>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link px-0 align-middle" data-bs-toggle="collapse" data-bs-target="#submenu-institute">
+                <i className="bi bi-building fs-4"></i>
+                <span className="ms-1 d-none d-sm-inline">INSTITUCION</span>
+              </a>
+              <ul className={`collapse nav flex-column ms-1 `} id="submenu-institute" data-bs-parent="#menu">
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-gear-wide-connected fs-4" style={{ marginRight: "5px" }}></i>
+                    <span className="d-none d-sm-inline">Configuracion General</span>
+                  </Link>
+                </li>
+                <li className="w-100">
+                  <Link to="/listperiods" className="nav-link px-0">
+                    <i className="bi bi-person-circle fs-4" style={{ marginRight: "5px" }}></i>
+
+                    <span className="d-none d-sm-inline">Perfil Personal</span>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link px-0 align-middle">
+                <i className="bi bi-question-circle fs-4"></i>
+                <span className="ms-1 d-none d-sm-inline">Ayuda</span>
+              </a>
+            </li>
+          </ul>
+          <hr />
+        </div>
+      </div>
+    </>
   );
+}
+
+CustomNavbar.propTypes = {
+  isSubPeriodPage: PropTypes.bool,
 };
 
-SidebarNavbar.propTypes = {
-  activeTab: PropTypes.string.isRequired,
-  onTabChange: PropTypes.func.isRequired,
-};
-
-export default SidebarNavbar;
+export default CustomNavbar;

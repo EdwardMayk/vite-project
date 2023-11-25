@@ -3,30 +3,42 @@ import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import { useUsuario } from '../context/UsuarioContext';
 
 const Login = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [usuario, setUsername] = useState('');
+  const [contraseña, setPassword] = useState('');
+  // const [datosUsuario, setDatosUsuario] = useState(null); // Estado para almacenar los datos del usuario
+  const { actualizarDatosUsuario } = useUsuario();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/api/login', {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ usuario, contraseña }),
       });
 
       const data = await response.json();
+      console.log(data);
 
       if (response.ok) {
         // Login exitoso, puedes manejar el estado de autenticación aquí
         toast.success('Inicio de sesión exitoso', {
           position: toast.POSITION.TOP_LEFT,
         });
+        const datosUsuario = data.usuario;
+        console.log('datosUsuario:', datosUsuario);
+        actualizarDatosUsuario(datosUsuario);
+
+        navigate(`/inicio`);
+
         console.log('Login successful');
 
         // Llama a la función proporcionada por la prop onLogin
@@ -58,7 +70,7 @@ const Login = ({ onLogin }) => {
           <Form.Control
             type="text"
             placeholder="Ingresa tu usuario"
-            value={username}
+            value={usuario}
             onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Group>
@@ -68,7 +80,7 @@ const Login = ({ onLogin }) => {
           <Form.Control
             type="password"
             placeholder="Ingresa tu contraseña"
-            value={password}
+            value={contraseña}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
