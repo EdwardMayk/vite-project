@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CustomNavbar from './navbar';
-import { useUsuario } from '../context/usuarioContext';
+import { useUsuario } from '../context/UsuarioContext';
 import { useArchivadores } from '../context/archivadoresContext';
 
 const AddDocument = () => {
