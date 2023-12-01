@@ -18,7 +18,7 @@ const Inicio = () => {
       const uuidUsuario = datosUsuario.uuid_usuario;
       console.log('uuidUsuario:', uuidUsuario);
 
-      fetch(`http://localhost:3000/api/periods/periodos/${uuidUsuario}`)
+      fetch(`https://backend-production-8aa0.up.railway.app/api/periods/periodos/${uuidUsuario}`)
         .then(response => response.json())
         .then(data => {
           console.log('Periodos obtenidos desde el backend:', data);

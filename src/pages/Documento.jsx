@@ -20,7 +20,7 @@ const Documentos = () => {
                 const uuidUsuario = datosUsuario.uuid_usuario;
                 const uuidArchivador = archivadorSeleccionado.uuid_archivador;
 
-                const response = await fetch(`http://localhost:3000/api/documentos/${uuidUsuario}/${uuidArchivador}`);
+                const response = await fetch(`https://backend-production-8aa0.up.railway.app/api/documentos/${uuidUsuario}/${uuidArchivador}`);
                 const data = await response.json();
 
                 if (data.success) {

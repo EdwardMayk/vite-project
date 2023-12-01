@@ -19,7 +19,7 @@ const AreasOficina = () => {
         // Realizar la solicitud al backend para obtener la lista de archivadores
         const fetchArchivadores = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/archivadores/${selectedArea.uuid_area}`);
+                const response = await fetch(`https://backend-production-8aa0.up.railway.app/api/archivadores/${selectedArea.uuid_area}`);
                 if (response.ok) {
                     const data = await response.json();
                     setArchivadores(data);

@@ -38,7 +38,7 @@ const Archivador = () => {
 
         try {
             // Enviar datos al backend
-            const response = await fetch('http://localhost:3000/api/archivadores', {
+            const response = await fetch('https://backend-production-8aa0.up.railway.app/api/archivadores', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

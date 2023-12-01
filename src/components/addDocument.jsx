@@ -40,7 +40,7 @@ const AddDocument = () => {
         dataToSend.append('descripcion', formData.descripcion);
 
         try {
-            const response = await fetch('http://localhost:3000/api/documentos/', {
+            const response = await fetch('https://backend-production-8aa0.up.railway.app/api/documentos/', {
                 method: 'POST',
                 body: dataToSend,
             });

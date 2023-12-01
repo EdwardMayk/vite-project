@@ -44,7 +44,7 @@ const Areas = () => {
     };
     const handleActualizarAreaExistente = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/areas/${areaEditada.uuid_area}`, {
+            const response = await fetch(`https://backend-production-8aa0.up.railway.app/api/areas/${areaEditada.uuid_area}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const Areas = () => {
 
     const fetchAreas = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/areas/${periodoSeleccionado.uuid_periodo}`);
+            const response = await fetch(`https://backend-production-8aa0.up.railway.app/api/areas/${periodoSeleccionado.uuid_periodo}`);
             const data = await response.json();
             setAreas(data);
             setAreasRegistradas(data.length > 0);
@@ -81,7 +81,7 @@ const Areas = () => {
 
     const handleCrearNuevaArea = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/areas/', {
+            const response = await fetch('https://backend-production-8aa0.up.railway.app/api/areas/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ const Areas = () => {
     const handleEliminarArea = async (uuidArea) => {
         try {
             console.log('uuidArea:', uuidArea);
-            const response = await fetch(`http://localhost:3000/api/areas/${uuidArea}`, {
+            const response = await fetch(`https://backend-production-8aa0.up.railway.app/api/areas/${uuidArea}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
