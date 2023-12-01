@@ -1,5 +1,3 @@
-// UsuarioContext.js
-
 import { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,13 +5,11 @@ const UsuarioContext = createContext();
 
 const UsuarioProvider = ({ children }) => {
     const [datosUsuario, setDatosUsuario] = useState(() => {
-        // Intenta obtener datos de usuario desde localStorage al inicio
         const storedUsuario = localStorage.getItem('datosUsuario');
         return storedUsuario ? JSON.parse(storedUsuario) : null;
     });
 
     useEffect(() => {
-        // Almacena los datos de usuario en localStorage cuando cambian
         localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
     }, [datosUsuario]);
 
@@ -29,7 +25,7 @@ const UsuarioProvider = ({ children }) => {
 };
 
 UsuarioProvider.propTypes = {
-    children: PropTypes.node.isRequired, // Agrega la validación para children
+    children: PropTypes.node.isRequired,
 };
 
 const useUsuario = () => {
