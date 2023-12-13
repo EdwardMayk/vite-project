@@ -8,8 +8,8 @@ const ListPeriods = () => {
     const [showModal, setShowModal] = useState(false);
     const [periods, setPeriods] = useState([]);
     const [newPeriod, setNewPeriod] = useState({ periodo: "", descripcion: "", isActive: true });
-    const [usuarioSeleccionado] = useUsuario();
-    console.log(usuarioSeleccionado);
+    const { datosUsuario, actualizarDatosUsuario } = useUsuario();
+    console.log('dasdsa', datosUsuario);
 
     const handleShow = () => setShowModal(true);
     const handleClose = () => setShowModal(false);
@@ -18,11 +18,10 @@ const ListPeriods = () => {
 
         try {
             // Assuming 'uuid_usuario' is available in the 'usuarioSeleccionado' object
-            const { uuid_usuario } = usuarioSeleccionado;
 
             const bodyWithUsuario = {
                 ...newPeriod,
-                uuid_usuario: uuid_usuario,
+                uuid_usuario: datosUsuario.uuid_usuario,
             };
 
             const response = await fetch('https://backend-production-8aa0.up.railway.app/api/periods/periodos', {
