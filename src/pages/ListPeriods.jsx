@@ -15,7 +15,7 @@ const ListPeriods = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('https://backend-production-8aa0.up.railway.app/api/periods/periods', {
+            const response = await fetch('https://backend-production-8aa0.up.railway.app/api/periods/periodos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
