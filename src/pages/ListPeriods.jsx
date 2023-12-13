@@ -1,26 +1,36 @@
 import { useEffect, useState } from "react";
 import { Modal, Button, Form } from 'react-bootstrap';
 import CustomNavbar from "../components/navbar";
+import { useUsuario } from "../context/UsuarioContext";
 
 const ListPeriods = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [periods, setPeriods] = useState([]);
     const [newPeriod, setNewPeriod] = useState({ periodo: "", descripcion: "", isActive: true });
+    const [usuarioSeleccionado] = useUsuario();
+    console.log(usuarioSeleccionado);
 
     const handleShow = () => setShowModal(true);
     const handleClose = () => setShowModal(false);
-
     const handleNewPeriodSubmit = async (event) => {
         event.preventDefault();
 
         try {
+            // Assuming 'uuid_usuario' is available in the 'usuarioSeleccionado' object
+            const { uuid_usuario } = usuarioSeleccionado;
+
+            const bodyWithUsuario = {
+                ...newPeriod,
+                uuid_usuario: uuid_usuario,
+            };
+
             const response = await fetch('https://backend-production-8aa0.up.railway.app/api/periods/periodos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newPeriod),
+                body: JSON.stringify(bodyWithUsuario),
             });
 
             const data = await response.json();
@@ -37,6 +47,7 @@ const ListPeriods = () => {
             console.error('Error creating period:', error);
         }
     };
+
     const fetchPeriods = async () => {
         try {
             const response = await fetch('https://backend-production-8aa0.up.railway.app/api/periods');
