@@ -35,7 +35,6 @@ const ListPeriods = () => {
             const data = await response.json();
 
             if (data.success) {
-                // Actualizar la lista de periodos después de agregar uno nuevo
                 fetchPeriods();
                 handleClose();
                 setNewPeriod({ periodo: "", descripcion: "", isActive: "activo" }); // Limpiar el formulario
@@ -49,7 +48,7 @@ const ListPeriods = () => {
 
     const fetchPeriods = async () => {
         try {
-            const response = await fetch('https://backend-production-8aa0.up.railway.app/api/periods');
+            const response = await fetch(`https://backend-production-8aa0.up.railway.app/api/periods/${datosUsuario.uuid_usuario}`);
             const data = await response.json();
             if (data.success) {
                 setPeriods(data.periods);
