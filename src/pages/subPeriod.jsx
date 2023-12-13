@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import CustomNavbar from '../components/navbar';
-// import ModalCrearArchivador from '../modal/ModalCrearArchivador';
+import ModalCrearArchivador from '../modal/ModalCrearArchivador';
 import { usePeriodo } from '../context/PeriodoContext';
 
 const SubPeriod = () => {
@@ -8,11 +9,11 @@ const SubPeriod = () => {
     console.log('periodoSeleccionado:', periodoSeleccionado);
 
     // // Estado para almacenar la información del periodo desde el backend
-    // const [archivadores, setArchivadores] = useState([]);
-    // const [mostrarModal, setMostrarModal] = useState(false);
+    const [archivadores, setArchivadores] = useState([]);
+    const [mostrarModal, setMostrarModal] = useState(false);
 
-    // const abrirModal = () => setMostrarModal(true);
-    // const cerrarModal = () => setMostrarModal(false);
+    const abrirModal = () => setMostrarModal(true);
+    const cerrarModal = () => setMostrarModal(false);
 
 
 
@@ -38,7 +39,7 @@ const SubPeriod = () => {
                         CREAR NUEVO ARCHIVADOR
                     </button>
                 </div>
-                {/* Mostrar la información de los archivadores
+                Mostrar la información de los archivadores
                 {archivadores.length > 0 ? (
                     <ul>
                         {archivadores.map((archivador, index) => (
@@ -46,16 +47,18 @@ const SubPeriod = () => {
                         ))}
                     </ul>
                 ) : (
-                   
-                )} */}
+                    <div className="alert alert-warning mt-3" role="alert">
+                        No hay ningún Archivador Creado dentro de este periodo
+                    </div>
+                )}
                 <div className="alert alert-warning mt-3" role="alert">
                     No hay ningún Archivador Creado dentro de este periodo
                 </div>
-                {/* Renderizar el modal
+                Renderizar el modal
                 <ModalCrearArchivador
                     mostrar={mostrarModal}
                     cerrarModal={cerrarModal}
-                /> */}
+                />
             </div>
 
         </div>

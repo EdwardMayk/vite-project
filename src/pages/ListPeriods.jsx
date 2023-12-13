@@ -33,6 +33,8 @@ const ListPeriods = () => {
             });
 
             const data = await response.json();
+            handleClose();
+
 
             if (data.success) {
                 fetchPeriods();
