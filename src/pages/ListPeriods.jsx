@@ -21,7 +21,7 @@ const ListPeriods = () => {
 
             const bodyWithUsuario = {
                 ...newPeriod,
-                uuid_usuario: datosUsuario.uuid_usuario,
+                uuidUsuario: datosUsuario.uuid_usuario,
             };
 
             const response = await fetch('https://backend-production-8aa0.up.railway.app/api/periods/periodos', {
