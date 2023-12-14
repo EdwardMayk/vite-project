@@ -32,7 +32,6 @@ const AddDocument = () => {
         e.preventDefault();
 
         const dataToSend = new FormData();
-        dataToSend.append('archivoDocumento', formData.archivoDocumento);
         dataToSend.append('numeroDocumento', formData.numeroDocumento);
         dataToSend.append('numeroFolio', formData.numeroFolio);
         dataToSend.append('personaDirigido', formData.personaDirigido);
@@ -51,7 +50,6 @@ const AddDocument = () => {
         }
 
         setFormData({
-            archivoDocumento: null,
             numeroDocumento: '',
             numeroFolio: '',
             personaDirigido: '',
@@ -70,19 +68,6 @@ const AddDocument = () => {
                     <h1 className="mb-4">NUEVO DOCUMENTO</h1>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="archivoDocumento" className="form-label">
-                            Subir Archivo:
-                        </label>
-                        <input
-                            type="file"
-                            className="form-control"
-                            id="archivoDocumento"
-                            name="archivoDocumento"
-                            onChange={handleChange}
-                        />
-                    </div>
-
                     <div className="mb-3">
                         <label htmlFor="numeroDocumento" className="form-label">
                             Número Documento:

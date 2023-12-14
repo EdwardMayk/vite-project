@@ -301,12 +301,6 @@ const Areas = () => {
                                         </td>
                                         <td>
                                             <button
-                                                className="btn btn-success me-2"
-                                                onClick={() => handleActualizarArea(area)}
-                                            >
-                                                <i className="bi bi-pencil"></i> Actualizar
-                                            </button>
-                                            <button
                                                 className="btn btn-danger"
                                                 onClick={() => handleEliminarArea(area.uuid_area)}
                                             >

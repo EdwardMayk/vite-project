@@ -42,21 +42,31 @@ const AreasOficina = () => {
     const currentArchivadores = archivadores.slice(indexOfFirstArchivador, indexOfLastArchivador);
 
     const handleActualizarArchivador = (archivador) => {
-        // Lógica para manejar la acción de actualizar el archivador
         console.log(`Actualizar archivador: ${archivador.nombre_archivador}`);
     };
 
-    const handleEliminarArchivador = (uuidArchivador) => {
-        // Lógica para manejar la acción de eliminar el archivador
-        console.log(`Eliminar archivador con UUID: ${uuidArchivador}`);
-    };
+    const handleEliminarArchivador = async (uuidArchivador) => {
+        try {
+            const response = await fetch(`https://backend-production-8aa0.up.railway.app/api/archivadores/${uuidArchivador}`, {
+                method: 'DELETE',
+            });
 
+            if (response.ok) {
+                console.log(`Archivador con UUID ${uuidArchivador} eliminado exitosamente.`);
+            } else {
+
+                console.error(`Error al eliminar archivador con UUID ${uuidArchivador}`);
+            }
+        } catch (error) {
+            console.error('Error de red al intentar eliminar el archivador', error);
+        }
+    };
     const totalRecords = archivadores.length;
     const totalPages = Math.ceil(totalRecords / archivadoresPerPage);
 
     const handleRecordsPerPageChange = (e) => {
         setRecordsPerPage(e.target.value);
-        setCurrentPage(1); // Reset to the first page when changing the number of records per page
+        setCurrentPage(1);
     };
 
     const handleNextPage = () => {
@@ -151,12 +161,6 @@ const AreasOficina = () => {
                                                 <td>{archivador.estante}</td>
                                                 <td>{archivador.descripcion}</td>
                                                 <td style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <Button
-                                                        variant="success"
-                                                        onClick={() => handleActualizarArchivador(archivador)}
-                                                    >
-                                                        Actualizar
-                                                    </Button>{' '}
                                                     <Button
                                                         variant="danger"
                                                         onClick={() => handleEliminarArchivador(archivador.uuid_archivador)}

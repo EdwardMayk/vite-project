@@ -141,9 +141,6 @@ const Documentos = () => {
                                             <i className="bi-eye" /> Revisar
                                         </td>
                                         <td>
-                                            <Button variant="info" style={{ marginRight: "5px" }}>
-                                                <i className="bi-pencil-square" /> Actualizar
-                                            </Button>
                                             <Button variant="danger">
                                                 <i className="bi-trash" /> Eliminar
                                             </Button>
