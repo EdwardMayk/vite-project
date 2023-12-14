@@ -105,33 +105,6 @@ const CustomNavbar = ({ isSubPeriodPage }) => {
                 </li>
               </ul>
             </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link px-0 align-middle" data-bs-toggle="collapse" data-bs-target="#submenu-institute">
-                <i className="bi bi-building fs-4"></i>
-                <span className="ms-1 d-none d-sm-inline">INSTITUCION</span>
-              </a>
-              <ul className={`collapse nav flex-column ms-1 `} id="submenu-institute" data-bs-parent="#menu">
-                <li className="w-100">
-                  <Link to="/listperiods" className="nav-link px-0">
-                    <i className="bi bi-gear-wide-connected fs-4" style={{ marginRight: "5px" }}></i>
-                    <span className="d-none d-sm-inline">Configuracion General</span>
-                  </Link>
-                </li>
-                <li className="w-100">
-                  <Link to="/listperiods" className="nav-link px-0">
-                    <i className="bi bi-person-circle fs-4" style={{ marginRight: "5px" }}></i>
-
-                    <span className="d-none d-sm-inline">Perfil Personal</span>
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link px-0 align-middle">
-                <i className="bi bi-question-circle fs-4"></i>
-                <span className="ms-1 d-none d-sm-inline">Ayuda</span>
-              </a>
-            </li>
           </ul>
           <hr />
         </div>
