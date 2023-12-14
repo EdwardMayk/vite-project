@@ -12,7 +12,7 @@ const CustomNavbar = ({ isSubPeriodPage }) => {
     localStorage.removeItem('datosUsuario');
     actualizarDatosUsuario(null);
 
-    navigate('/login');
+    navigate('/');
   };
   return (
     <>
