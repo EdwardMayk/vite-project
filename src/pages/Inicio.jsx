@@ -36,7 +36,7 @@ const Inicio = () => {
     if (periodoSeleccionado) {
       actualizarPeriodoSeleccionado(periodoSeleccionado);
       console.log('periodoSeleccionadoDASDAS:', periodoSeleccionado);
-      navigate(`/subperiod`, {
+      navigate(`/areas`, {
         state: { periodoSeleccionado }
       });
     }

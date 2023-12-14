@@ -24,8 +24,6 @@ import AddDocument from './components/addDocument.jsx';
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-
-  // Función para manejar el inicio de sesión exitoso
   const handleLogin = () => {
     setLoggedIn(true);
   };
