@@ -1,7 +1,19 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { useUsuario } from '../context/UsuarioContext';
+
 
 const CustomNavbar = ({ isSubPeriodPage }) => {
+  const navigate = useNavigate();
+  const { datosUsuario, actualizarDatosUsuario } = useUsuario();
+  const handleLogout = () => {
+    // Elimina los datos de usuario del almacenamiento local y del contexto
+    localStorage.removeItem('datosUsuario');
+    actualizarDatosUsuario(null);
+
+    navigate('/login');
+  };
   return (
     <>
       <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -10,6 +22,9 @@ const CustomNavbar = ({ isSubPeriodPage }) => {
             <i className="bi bi-house fs-4"></i>
             <span className="fs-5 d-none d-sm-inline">Menu</span>
           </a>
+          <Button variant="danger" onClick={handleLogout}>
+            Cerrar sesión
+          </Button>
           <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <li className="nav-item">
               <Link to="/Inicio" className="nav-link align-middle px-0">
